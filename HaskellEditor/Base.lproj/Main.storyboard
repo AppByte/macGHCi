@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="macGHCi" id="1Xt-HY-uBw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="macGHCi" systemMenu="apple" id="uQy-DD-JDr">
+                                    <items>
+                                        <menuItem title="About macOSGHCI" id="5kV-Vb-QxS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                                        <menuItem title="Quit macOSGHCI" keyEquivalent="q" id="4sb-4s-VLi">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" id="sJj-jp-JOT">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" systemMenu="apple" id="lyY-tP-Gtk">
+                                    <items>
+                                        <menuItem title="Copy" keyEquivalent="c" id="2n6-As-r6R">
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="SNK-Jv-lhW"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="iAC-3E-uwl">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="UwX-Uk-XXi"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="GHCi" id="dMs-cI-mzQ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="GHCi" id="bib-Uj-vzu">
+                                    <items>
+                                        <menuItem title="Load File" keyEquivalent="l" id="b0O-8h-Rgn">
+                                            <connections>
+                                                <action selector="loadFile:" target="Voe-Tx-rLC" id="oXf-vw-chr"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Add File" keyEquivalent="a" id="53Y-qm-Ezo">
+                                            <connections>
+                                                <action selector="addFile:" target="Voe-Tx-rLC" id="Kld-0Z-z14"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Editor" id="wpr-3q-Mcd">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Editor" systemMenu="help" id="F2S-fz-NVQ">
+                                    <items>
+                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                                            <connections>
+                                                <action selector="createNewEditorSession:" target="Voe-Tx-rLC" id="TKV-Uf-tPU"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
+                                            <connections>
+                                                <action selector="openEditorSession:" target="Voe-Tx-rLC" id="ATk-eG-SXh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
+                                            <connections>
+                                                <action selector="saveEditorSession:" target="Voe-Tx-rLC" id="LjH-YM-UtM"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Actions" id="Vd7-PK-hAw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Actions" systemMenu="help" id="bgX-f3-UIx">
+                                    <items>
+                                        <menuItem title="Run &quot;main&quot;" keyEquivalent="r" id="Db4-DK-lHo">
+                                            <connections>
+                                                <action selector="runMain:" target="Voe-Tx-rLC" id="fix-xS-MqV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="wmu-Uq-6jG"/>
+                                        <menuItem title="Reload" id="Zhl-D8-n4y">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="reloadGHCi:" target="Voe-Tx-rLC" id="p9p-ia-tZf"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Clear Modules" id="X6j-3i-Lcj">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="clearModules:" target="Voe-Tx-rLC" id="8Im-Qx-MOf"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="CDR-gk-UfU"/>
+                                        <menuItem title="Open Text Editor" id="jjK-I8-RQr">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openTextEditor:" target="Voe-Tx-rLC" id="Wad-xy-RMc"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Help" id="sLR-Rq-L66">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Help" systemMenu="help" id="f6d-5s-Tq1">
+                                    <items>
+                                        <menuItem title="GHC Documentation" keyEquivalent="1" id="fkL-8P-ZF2">
+                                            <connections>
+                                                <action selector="openGHCDoc:" target="Voe-Tx-rLC" id="6M4-2q-gal"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="GHCi Commands" keyEquivalent="2" id="bPE-d4-mgD">
+                                            <connections>
+                                                <action selector="displayGHCiCommands:" target="Voe-Tx-rLC" id="XZg-H1-Jpw"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Libraries documentation" keyEquivalent="3" id="lsq-mS-sXf">
+                                            <connections>
+                                                <action selector="openLibrariesDoc:" target="Voe-Tx-rLC" id="S0c-ek-rMQ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Jmr-mw-9gc"/>
+                                        <menuItem title="GHC Website" keyEquivalent="4" id="DEZ-Iq-hNo">
+                                            <connections>
+                                                <action selector="openGHCWebpage:" target="Voe-Tx-rLC" id="dSr-8q-cY8"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Haskell Website" keyEquivalent="5" id="WbA-N7-dDy">
+                                            <connections>
+                                                <action selector="openHaskellWebpage:" target="Voe-Tx-rLC" id="Ltg-Xh-0IO"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="macGHCi" customModuleProvider="target"/>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="0.0"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="R2V-B0-nI4">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
+                    <window key="window" title="macGHCi" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="53" y="240" width="623" height="374"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                    </window>
+                    <connections>
+                        <segue destination="Pc0-ye-XBl" kind="relationship" relationship="window.shadowedContentViewController" id="RsN-kI-kq1"/>
+                    </connections>
+                </windowController>
+                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7" y="583"/>
+        </scene>
+        <!--Terminal View Controller-->
+        <scene sceneID="tCI-Br-uGz">
+            <objects>
+                <viewController id="Pc0-ye-XBl" customClass="TerminalViewController" customModule="macGHCi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Ao0-kO-Loc">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feF-vB-mEP">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" id="3zT-xT-LZ5">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" smartInsertDelete="YES" id="H1E-vN-0ux">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="448" height="298"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="Pc0-ye-XBl" id="EcZ-o0-8ec"/>
+                                            </connections>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="9bZ-a3-w9z">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="CeA-Dg-cjM">
+                                    <rect key="frame" x="433" y="1" width="16" height="298"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="feF-vB-mEP" secondAttribute="bottom" id="5xz-1k-oRx"/>
+                            <constraint firstItem="feF-vB-mEP" firstAttribute="leading" secondItem="Ao0-kO-Loc" secondAttribute="leading" id="gBN-2H-Hk0"/>
+                            <constraint firstAttribute="trailing" secondItem="feF-vB-mEP" secondAttribute="trailing" id="ncD-rd-4v3"/>
+                            <constraint firstItem="feF-vB-mEP" firstAttribute="top" secondItem="Ao0-kO-Loc" secondAttribute="top" id="u8N-ca-2dg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sourceEditor" destination="H1E-vN-0ux" id="WUM-OO-8Et"/>
+                    </connections>
+                </viewController>
+                <customObject id="zCR-0w-45G" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="698" y="583"/>
+        </scene>
+    </scenes>
+</document>
