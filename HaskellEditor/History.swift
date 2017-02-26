@@ -43,7 +43,7 @@ public class CommandHistory
     public func Add(command: String)
     {
         self.history.append(command)
-        self.historyIndex = self.history.count - 1
+        self.historyIndex = self.history.count
     }
     
     /**
