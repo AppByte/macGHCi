@@ -55,10 +55,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 NotificationCenter.default.post(name:Notification.Name(rawValue:"OnRunMain"), object: nil, userInfo: nil)
     }
     
-    @IBAction func stopExecution(_ sender: Any) {
-                NotificationCenter.default.post(name:Notification.Name(rawValue:"OnStopExecution"), object: nil, userInfo: nil)
-    }
-    
     @IBAction func reloadGHCi(_ sender: Any) {
                 NotificationCenter.default.post(name:Notification.Name(rawValue:"OnReload"), object: nil, userInfo: nil)
     }

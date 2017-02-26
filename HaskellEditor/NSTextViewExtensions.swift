@@ -94,4 +94,23 @@ extension NSTextView
         
         self.textStorage?.mutableString.setString(newContent)
     }
+    
+    /**
+     Cleans the text view.
+     */
+    public func clearString() -> String
+    {
+        let content : String =  (self.textStorage?.string)!
+        let lines : [String] = content.components(separatedBy: "\n")
+        NSLog("%@", lines)
+        
+        var newContent : String = ""
+        
+        for var i in 0...lines.count - 2
+        {
+            newContent.append(lines[i].appending("\n"))
+        }
+
+        return newContent
+    }
 }

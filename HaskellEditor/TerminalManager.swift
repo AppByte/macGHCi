@@ -110,6 +110,22 @@ public class TerminalManager
     }
     
     /**
+     Interrupts the process for a specific time.
+     */
+    public func interrupt()
+    {
+        self.process.interrupt()
+    }
+    
+    /**
+     Resumes the process.
+     */
+    public func resume()
+    {
+        self.process.resume()
+    }
+    
+    /**
      Represents the get data function for new data of the terminal.
      */
     @objc private func receivedTerminalData(notification: Notification)

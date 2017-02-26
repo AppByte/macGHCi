@@ -15,6 +15,8 @@
 		3B11E6FA1E5B879A001BD243 /* HaskellEditorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B11E6F91E5B879A001BD243 /* HaskellEditorUITests.swift */; };
 		3B37FABE1E5D7D7E003B83F7 /* NSTextViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37FABD1E5D7D7E003B83F7 /* NSTextViewExtensions.swift */; };
 		3B3F869C1E5C235F00FC49E5 /* TerminalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F869B1E5C235F00FC49E5 /* TerminalManager.swift */; };
+		3B5589C61E62F4EB007FF196 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5589C51E62F4EB007FF196 /* SettingsViewController.swift */; };
+		3B5589CA1E630863007FF196 /* NSUserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5589C91E630863007FF196 /* NSUserDefaultsExtensions.swift */; };
 		3BC9FEE31E6063E500A7685F /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC9FEE21E6063E500A7685F /* History.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		3B11E6FB1E5B879A001BD243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B37FABD1E5D7D7E003B83F7 /* NSTextViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTextViewExtensions.swift; sourceTree = "<group>"; };
 		3B3F869B1E5C235F00FC49E5 /* TerminalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalManager.swift; sourceTree = "<group>"; };
+		3B5589C51E62F4EB007FF196 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3B5589C91E630863007FF196 /* NSUserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		3BC9FEE21E6063E500A7685F /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +107,7 @@
 			children = (
 				3B11E6DC1E5B879A001BD243 /* AppDelegate.swift */,
 				3B11E6DE1E5B879A001BD243 /* TerminalViewController.swift */,
+				3B5589C51E62F4EB007FF196 /* SettingsViewController.swift */,
 				3B37FAC11E5D820A003B83F7 /* Classes */,
 				3B37FAC21E5D820F003B83F7 /* Extensions */,
 				3B11E6E01E5B879A001BD243 /* Assets.xcassets */,
@@ -136,6 +141,7 @@
 		3B37FAC11E5D820A003B83F7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3BC9FEE21E6063E500A7685F /* History.swift */,
 				3B3F869B1E5C235F00FC49E5 /* TerminalManager.swift */,
 			);
 			name = Classes;
@@ -144,8 +150,8 @@
 		3B37FAC21E5D820F003B83F7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3BC9FEE21E6063E500A7685F /* History.swift */,
 				3B37FABD1E5D7D7E003B83F7 /* NSTextViewExtensions.swift */,
+				3B5589C91E630863007FF196 /* NSUserDefaultsExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -297,8 +303,10 @@
 				3B3F869C1E5C235F00FC49E5 /* TerminalManager.swift in Sources */,
 				3B37FABE1E5D7D7E003B83F7 /* NSTextViewExtensions.swift in Sources */,
 				3B11E6DF1E5B879A001BD243 /* TerminalViewController.swift in Sources */,
+				3B5589CA1E630863007FF196 /* NSUserDefaultsExtensions.swift in Sources */,
 				3B11E6DD1E5B879A001BD243 /* AppDelegate.swift in Sources */,
 				3BC9FEE31E6063E500A7685F /* History.swift in Sources */,
+				3B5589C61E62F4EB007FF196 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

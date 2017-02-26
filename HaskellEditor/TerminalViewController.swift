@@ -26,6 +26,19 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     private var history : CommandHistory = CommandHistory.init()
     
     /**
+     Represents the user defaults.
+     */
+    private var userDefaults : UserDefaults = UserDefaults.standard
+    
+    /**
+     Called when the view will appear.
+     */
+    internal override func viewWillAppear() {
+        self.setupDefaults()
+        self.sourceEditor.backgroundColor = self.userDefaults.colorForKey(key: "editorBackgroundColor")!
+    }
+    
+    /**
      Initializes a new instance of the view controller clas.
      */
     internal override func viewDidLoad() {
@@ -69,27 +82,29 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     }
     
     /**
-     Represents the call back method of the on new data received notification.
+     Setups the default values.
      */
-    private func ghci_OnNewDataReceivedCallBack(notification: Notification)
+    private func setupDefaults()
     {
-        let userInfo = notification.userInfo
-        let message  = userInfo?["message"] as? String
+        if (self.userDefaults.value(forKey: "fontSize") == nil)
+        {
+            self.userDefaults.set(13, forKey: "fontSize")
+        }
         
-        let attributes = [NSFontAttributeName:  NSFont(name: "Consolas", size: 13)]
-        self.sourceEditor.textStorage?.append(NSAttributedString(string: message!, attributes: attributes))
-    }
-    
-    /**
-     Represents the call back method of the on new error received notification.
-     */
-    private func ghci_OnErrorDataReceivedCallBack(notification: Notification)
-    {
-        let userInfo = notification.userInfo
-        let message  = userInfo?["message"] as? String
-        let attributes = [NSFontAttributeName:  NSFont(name: "Consolas", size: 13)]
+        if (self.userDefaults.value(forKey: "font") == nil)
+        {
+            self.userDefaults.set("Consolas", forKey: "font")
+        }
         
-       self.sourceEditor.textStorage?.setAttributedString(NSAttributedString(string: self.sourceEditor.getPreviousLineAndAppend(message: message!), attributes: attributes))   
+        if (self.userDefaults.value(forKey: "fontColor") == nil)
+        {
+            self.userDefaults.setColor(color: NSColor.black, forKey: "fontColor")
+        }
+        
+        if (self.userDefaults.value(forKey: "editorBackgroundColor") == nil)
+        {
+            self.userDefaults.setColor(color: NSColor.white, forKey: "editorBackgroundColor")
+        }
     }
     
     /**
@@ -134,11 +149,62 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
         NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"OnDisplayCommands"),
                                                object:nil, queue:nil,
                                                using:ghci_OnDisplayCommandsCallBack)
+        NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"OnRefreshEditor"),
+                                               object:nil, queue:nil,
+                                               using:onRefreshEditor)
+    }
+    
+    /**
+     Redraws the content of the source editor.
+     
+     - Parameter notification: Contains the notification arguments.
+     */
+    private func onRefreshEditor(notification: Notification)
+    {
+        self.sourceEditor.backgroundColor = self.userDefaults.colorForKey(key: "editorBackgroundColor")!
+        let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+        
+        self.sourceEditor.textStorage?.setAttributedString(NSAttributedString(string: (self.sourceEditor.textStorage?.string)!, attributes: attributes))
+    }
+    
+    /**
+     Represents the call back method of the on new data received notification.
+     
+     - Parameter notification: Contains the notification arguments.
 
+     */
+    private func ghci_OnNewDataReceivedCallBack(notification: Notification)
+    {
+        let userInfo = notification.userInfo
+        let message  = userInfo?["message"] as? String
+        
+        let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+        self.sourceEditor.textStorage?.append(NSAttributedString(string: message!, attributes: attributes))
+        self.sourceEditor.scrollToEndOfDocument(self)
+    }
+    
+    /**
+     Represents the call back method of the on new error received notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
+     */
+    private func ghci_OnErrorDataReceivedCallBack(notification: Notification)
+    {
+        let userInfo = notification.userInfo
+        let message  = userInfo?["message"] as? String
+        let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+        
+        self.sourceEditor.textStorage?.setAttributedString(NSAttributedString(string: self.sourceEditor.getPreviousLineAndAppend(message: message!), attributes: attributes))
+        
+        self.sourceEditor.scrollToEndOfDocument(self)
     }
     
     /**
      Represents the call back method of the on new editor session notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnNewEditorSessionCallBack(notification: Notification)
     {
@@ -148,6 +214,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on run main notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnRunMainCallBack(notification: Notification)
     {
@@ -157,6 +226,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on reload notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnReloadCallBack(notification: Notification)
     {
@@ -166,6 +238,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on clear modules notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnClearModulesCallBack(notification: Notification)
     {
@@ -175,6 +250,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on open text editor notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnOpenTextEditorCallBack(notification: Notification)
     {
@@ -184,6 +262,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on display commands notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnDisplayCommandsCallBack(notification: Notification)
     {
@@ -193,6 +274,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on load file notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnLoadFileCallBack(notification: Notification)
     {
@@ -211,6 +295,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on open editor session notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnOpenEditorSessionCallBack(notification: Notification)
     {
@@ -241,6 +328,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on save editor session notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnSaveEditorSessionCallBack(notification: Notification)
     {
@@ -259,6 +349,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
      Represents the call back method of the on add file notification.
+     
+     - Parameter notification: Contains the notification arguments.
+
      */
     private func ghci_OnAddFileCallBack(notification: Notification)
     {
