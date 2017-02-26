@@ -9,13 +9,13 @@ Please note macGHCi requires macOS 10.12.x
 
 List of functions:
 
--) Load a file
--) Add a file
--) Save editor output
--) Load editor output
--) Run main
--) Clear modules
--) Reload
--) Open in editor
--) History of commands 
--) Links to documentation
+* Load a file
+* Add a file
+* Save editor output
+* Load editor output
+* Run main
+* Clear modules
+* Reload
+* Open in editor
+* History of commands 
+* Links to documentation
