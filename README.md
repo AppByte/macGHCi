@@ -19,3 +19,7 @@ List of functions:
 * Open in editor
 * History of commands 
 * Links to documentation
+* Changeable background color
+* Changeable font
+* Changeable font size
+* Changeable font color
