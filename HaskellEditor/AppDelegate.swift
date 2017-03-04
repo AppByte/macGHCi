@@ -42,6 +42,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.default.post(name:Notification.Name(rawValue:"OnSaveEditorSession"), object: nil, userInfo: nil)
     }
     
+    @IBAction func saveAsEditorSession(_ sender: Any) {
+        NotificationCenter.default.post(name:Notification.Name(rawValue:"OnSaveAsEditorSession"), object: nil, userInfo: nil)
+    }
+    
     @IBAction func openEditorSession(_ sender: Any)
     {
         NotificationCenter.default.post(name:Notification.Name(rawValue:"OnOpenEditorSession"), object: nil, userInfo: nil)

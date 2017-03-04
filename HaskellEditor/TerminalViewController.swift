@@ -8,6 +8,14 @@
 
 import Cocoa
 
+/**
+ 
+ This class represents the terminal window. It outputs and reads the haskell commands.
+ 
+ - Version 1.1.5
+ 
+ - Author: Daniel Strebinger
+ */
 internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     
     /**
@@ -31,11 +39,17 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     private var userDefaults : UserDefaults = UserDefaults.standard
     
     /**
+     Represents the current save path of the terminal output.
+     */
+    private var savePath : String = ""
+    
+    /**
      Called when the view will appear.
      */
     internal override func viewWillAppear() {
         self.setupDefaults()
         self.sourceEditor.backgroundColor = self.userDefaults.colorForKey(key: "editorBackgroundColor")!
+        self.view.window?.title = "macGHCi - Untitled.hs (not saved)"
     }
     
     /**
@@ -77,6 +91,12 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
             self.sourceEditor.replaceCommand(command:  self.history.GetCommand(older: false))
             return true
         }
+        
+        if (self.savePath != "")
+        {
+            self.view.window?.title = "macGHCi - " + (Foundation.URL(string: self.savePath)?.lastPathComponent)! + " (Unsaved changes)"
+        }
+
         
         return false
     }
@@ -146,6 +166,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
         NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"OnSaveEditorSession"),
                                                object:nil, queue:nil,
                                                using:ghci_OnSaveEditorSessionCallBack)
+        NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"OnSaveAsEditorSession"),
+                                               object:nil, queue:nil,
+                                               using:ghci_OnSaveAsEditorSessionCallBack)
         NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"OnDisplayCommands"),
                                                object:nil, queue:nil,
                                                using:ghci_OnDisplayCommandsCallBack)
@@ -208,6 +231,8 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
      */
     private func ghci_OnNewEditorSessionCallBack(notification: Notification)
     {
+        self.savePath = ""
+        self.view.window?.title = "macGHCi - Untitled.hs (not saved)"
         self.sourceEditor.textStorage?.mutableString.setString("")
         self.ghci.write("")
     }
@@ -308,6 +333,7 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
             completionHandler: {(result:Int) in
                 if(result == NSFileHandlingPanelOKButton)
                 {
+                    self.view.window?.title = "macGHCi - " + (panel.url?.lastPathComponent)!
                     self.sourceEditor.textStorage?.mutableString.setString("")
                     
                     var value : String = ""
@@ -321,7 +347,10 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
                         value = ""
                     }
                     
-                    self.sourceEditor.textStorage?.mutableString.setString(value)
+                    self.sourceEditor.backgroundColor = self.userDefaults.colorForKey(key: "editorBackgroundColor")!
+                    let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+                    
+                    self.sourceEditor.textStorage?.setAttributedString(NSAttributedString(string: value, attributes: attributes))
                 }
         })
     }
@@ -334,17 +363,48 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
      */
     private func ghci_OnSaveEditorSessionCallBack(notification: Notification)
     {
+        if (self.savePath == "")
+        {
+            let panel : NSSavePanel = NSSavePanel()
+            panel.title = "Save file"
+            panel.allowedFileTypes = ["hs"]
+            panel.begin(
+                completionHandler: {(result:Int) in
+                    if(result == NSFileHandlingPanelOKButton)
+                    {
+                        self.view.window?.title = "macGHCi - " + (panel.url?.lastPathComponent)!
+                        self.savePath = panel.url!.path
+                        FileManager.default.createFile(atPath: self.savePath, contents: self.sourceEditor.textStorage!.string.data(using: .utf8), attributes: nil)
+                    }
+            })
+            
+            return
+        }
+
+        FileManager.default.createFile(atPath: self.savePath, contents: self.sourceEditor.textStorage!.string.data(using: .utf8), attributes: nil)
+    }
+    
+    /**
+     Represents the call back method of the on save editor session notification.
+     
+     - Parameter notification: Contains the notification arguments.
+     
+     */
+    private func ghci_OnSaveAsEditorSessionCallBack(notification: Notification)
+    {
         let panel : NSSavePanel = NSSavePanel()
-        panel.title = "Select file"
+        panel.title = "Save file"
         panel.allowedFileTypes = ["hs"]
         panel.begin(
             completionHandler: {(result:Int) in
                 if(result == NSFileHandlingPanelOKButton)
                 {
-                    FileManager.default.createFile(atPath: panel.url!.path, contents: self.sourceEditor.textStorage!.string.data(using: .utf8), attributes: nil)
+                    self.view.window?.title = "macGHCi - " + (panel.url?.lastPathComponent)!
+                    self.savePath = panel.url!.path
+                    FileManager.default.createFile(atPath: self.savePath, contents: self.sourceEditor.textStorage!.string.data(using: .utf8), attributes: nil)
                 }
         })
-
+        
     }
     
     /**

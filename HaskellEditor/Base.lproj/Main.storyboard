@@ -36,7 +36,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit macOSGHCI" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit macGHCI" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -50,12 +50,12 @@
                                     <items>
                                         <menuItem title="Copy" keyEquivalent="c" id="2n6-As-r6R">
                                             <connections>
-                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="SNK-Jv-lhW"/>
+                                                <action selector="copy:" target="Ady-hI-5gd" id="on6-HZ-UcH"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Paste" keyEquivalent="v" id="iAC-3E-uwl">
                                             <connections>
-                                                <action selector="terminate:" target="Ady-hI-5gd" id="UwX-Uk-XXi"/>
+                                                <action selector="paste:" target="Ady-hI-5gd" id="MLc-yH-bdK"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -95,6 +95,12 @@
                                         <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
                                             <connections>
                                                 <action selector="saveEditorSession:" target="Voe-Tx-rLC" id="LjH-YM-UtM"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save as..." id="ZxU-Nf-oKj">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="saveAsEditorSession:" target="Voe-Tx-rLC" id="b9h-EN-taX"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -313,7 +319,6 @@
                         <outlet property="fontColorSelector" destination="CsT-8A-JX7" id="yNU-BA-Bth"/>
                         <outlet property="fontSelector" destination="XhV-dr-2MB" id="c7A-KU-yLV"/>
                         <outlet property="fontSizeTextBox" destination="MC3-2h-5li" id="wJO-oj-n2u"/>
-                        <outlet property="resetValues" destination="Lyb-jU-e3a" id="QfQ-Pg-DT2"/>
                     </connections>
                 </viewController>
                 <customObject id="kaS-ou-Wgg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

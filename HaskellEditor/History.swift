@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /**
  Represents the command history.
  

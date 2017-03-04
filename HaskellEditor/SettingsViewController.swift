@@ -88,5 +88,6 @@ class SettingsViewController: NSViewController {
         self.userDefaults.setColor(color: NSColor.black, forKey: "fontColor")
         self.userDefaults.setColor(color: NSColor.white, forKey: "editorBackgroundColor")
         self.restoreSettings()
+        NotificationCenter.default.post(name:Notification.Name(rawValue:"OnRefreshEditor"), object: nil, userInfo: nil)
     }
 }
