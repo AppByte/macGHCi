@@ -14,6 +14,7 @@ List of functions:
 * Save editor output
 * Load editor output
 * Run main
+* Stop execution
 * Clear modules
 * Reload
 * Open in editor
