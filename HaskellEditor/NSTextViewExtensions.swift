@@ -22,19 +22,12 @@ extension NSTextView
         let content : String =  (self.textStorage?.string)!
         let lines : [String] = content.components(separatedBy: "\n")
         
-        var line = lines[lines.count - 1]
+        let line = lines[lines.count - 1]
         
-        if (line != "")
+        if (line != "" && (line.range(of: ">") != nil))
         {
-            for var i in 0...line.characters.count - 1 {
-                
-                if (line[line.index(line.startIndex, offsetBy: i)] == ">")
-                {
-                    line = line.substring(from: line.index(line.startIndex, offsetBy: i + 1))
-                    break;
-                }
-            }
-
+            var lineContents = line.components(separatedBy: ">")
+            return lineContents[1]
         }
         
         return line
@@ -75,7 +68,7 @@ extension NSTextView
         let content : String =  (self.textStorage?.string)!
         let lines : [String] = content.components(separatedBy: "\n")
         
-        var line = lines[lines.count - 1]
+        let line = lines[lines.count - 1]
         var lineParts = line.components(separatedBy: ">")
         var newLine = lineParts[0].appending(">")
         var newContent : String = ""
@@ -93,24 +86,5 @@ extension NSTextView
         }
         
         self.textStorage?.mutableString.setString(newContent)
-    }
-    
-    /**
-     Cleans the text view.
-     */
-    public func clearString() -> String
-    {
-        let content : String =  (self.textStorage?.string)!
-        let lines : [String] = content.components(separatedBy: "\n")
-        NSLog("%@", lines)
-        
-        var newContent : String = ""
-        
-        for var i in 0...lines.count - 2
-        {
-            newContent.append(lines[i].appending("\n"))
-        }
-
-        return newContent
-    }
+    }    
 }

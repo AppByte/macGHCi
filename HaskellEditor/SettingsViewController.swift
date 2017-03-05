@@ -8,7 +8,10 @@
 
 import Cocoa
 
-class SettingsViewController: NSViewController {
+/**
+ Represents the settings view controller
+ */
+internal class SettingsViewController: NSViewController {
 
     /**
      Represents the connection to the font selector.

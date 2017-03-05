@@ -12,8 +12,6 @@ import Cocoa
  
  This class represents the terminal window. It outputs and reads the haskell commands.
  
- - Version 1.1.5
- 
  - Author: Daniel Strebinger
  */
 internal class TerminalViewController: NSViewController, NSTextViewDelegate {
@@ -57,6 +55,7 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
      */
     internal override func viewDidLoad() {
         super.viewDidLoad()
+        self.sourceEditor.delegate = self
         self.sourceEditor.isAutomaticQuoteSubstitutionEnabled = false
         self.ghci.start("/usr/local/bin/ghci", args: [])
         self.registerNotifications()
@@ -87,6 +86,7 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
             self.sourceEditor.replaceCommand(command:  self.history.GetCommand(older: true))
             return true
         }
+        
         if( commandSelector == #selector(NSResponder.moveDown(_:)) ){
             self.sourceEditor.replaceCommand(command:  self.history.GetCommand(older: false))
             return true
@@ -175,6 +175,21 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
         NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"OnRefreshEditor"),
                                                object:nil, queue:nil,
                                                using:onRefreshEditor)
+        NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"OnCancelExecution"),
+                                               object:nil, queue:nil,
+                                               using:ghci_OnCancelExecutionCallBack)
+    }
+    
+    /**
+     Represents the call back method of the on cancel execution notification.
+     
+     - Parameter notification: Contains the notification arguments.
+     
+     */
+    private func ghci_OnCancelExecutionCallBack(notification: Notification)
+    {
+        self.ghci.interrupt()
+        self.ghci.resume()
     }
     
     /**
@@ -199,9 +214,10 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     private func ghci_OnNewDataReceivedCallBack(notification: Notification)
     {
         let userInfo = notification.userInfo
-        let message  = userInfo?["message"] as? String
+        var message  = userInfo?["message"] as? String
         
         let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+
         self.sourceEditor.textStorage?.append(NSAttributedString(string: message!, attributes: attributes))
         self.sourceEditor.scrollToEndOfDocument(self)
     }
