@@ -1,0 +1,132 @@
+
+/* Class = "NSMenuItem"; title = "macGHCi"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "macGHCi";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "2n6-As-r6R"; */
+"2n6-As-r6R.title" = "Kopieren";
+
+/* Class = "NSTextFieldCell"; title = "Editor background:"; ObjectID = "2s4-hN-SlO"; */
+"2s4-hN-SlO.title" = "Hintergrund:";
+
+/* Class = "NSMenuItem"; title = "Quit macGHCI"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "macGHCi beenden";
+
+/* Class = "NSMenuItem"; title = "Add File"; ObjectID = "53Y-qm-Ezo"; */
+"53Y-qm-Ezo.title" = "Datei hinzufügen";
+
+/* Class = "NSMenuItem"; title = "About macOSGHCI"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Über macOSGHCi";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Hauptmenü";
+
+/* Class = "NSMenuItem"; title = "GHC Website"; ObjectID = "DEZ-Iq-hNo"; */
+"DEZ-Iq-hNo.title" = "GHC Website";
+
+/* Class = "NSMenuItem"; title = "Run \"main\""; ObjectID = "Db4-DK-lHo"; */
+"Db4-DK-lHo.title" = "Run \"main\"";
+
+/* Class = "NSMenu"; title = "Editor"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Editor";
+
+/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "IAo-SY-fd9"; */
+"IAo-SY-fd9.title" = "Open…";
+
+/* Class = "NSWindow"; title = "macGHCi"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "macGHCi";
+
+/* Class = "NSButtonCell"; title = "Save"; ObjectID = "MkL-xy-BRd"; */
+"MkL-xy-BRd.title" = "Save";
+
+/* Class = "NSMenuItem"; title = "Settings"; ObjectID = "Nlb-fa-OYy"; */
+"Nlb-fa-OYy.title" = "Settings";
+
+/* Class = "NSTextFieldCell"; title = "Font color:"; ObjectID = "SHj-Cb-OtG"; */
+"SHj-Cb-OtG.title" = "Font color:";
+
+/* Class = "NSMenuItem"; title = "Actions"; ObjectID = "Vd7-PK-hAw"; */
+"Vd7-PK-hAw.title" = "Actions";
+
+/* Class = "NSMenuItem"; title = "New Window"; ObjectID = "W3P-Dq-oiP"; */
+"W3P-Dq-oiP.title" = "New Window";
+
+/* Class = "NSMenuItem"; title = "New"; ObjectID = "Was-JA-tGl"; */
+"Was-JA-tGl.title" = "New";
+
+/* Class = "NSMenuItem"; title = "Haskell Website"; ObjectID = "WbA-N7-dDy"; */
+"WbA-N7-dDy.title" = "Haskell Website";
+
+/* Class = "NSMenuItem"; title = "Clear Modules"; ObjectID = "X6j-3i-Lcj"; */
+"X6j-3i-Lcj.title" = "Clear Modules";
+
+/* Class = "NSWindow"; title = "Settings"; ObjectID = "ZNj-Y6-R6p"; */
+"ZNj-Y6-R6p.title" = "Settings";
+
+/* Class = "NSMenuItem"; title = "Reload"; ObjectID = "Zhl-D8-n4y"; */
+"Zhl-D8-n4y.title" = "Reload";
+
+/* Class = "NSMenuItem"; title = "Save as..."; ObjectID = "ZxU-Nf-oKj"; */
+"ZxU-Nf-oKj.title" = "Save as...";
+
+/* Class = "NSMenuItem"; title = "Load File"; ObjectID = "b0O-8h-Rgn"; */
+"b0O-8h-Rgn.title" = "Load File";
+
+/* Class = "NSMenuItem"; title = "GHCi Commands"; ObjectID = "bPE-d4-mgD"; */
+"bPE-d4-mgD.title" = "GHCi Commands";
+
+/* Class = "NSTextFieldCell"; title = "Font size:"; ObjectID = "bcF-Qr-0WY"; */
+"bcF-Qr-0WY.title" = "Font size:";
+
+/* Class = "NSMenu"; title = "Actions"; ObjectID = "bgX-f3-UIx"; */
+"bgX-f3-UIx.title" = "Actions";
+
+/* Class = "NSMenu"; title = "GHCi"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "GHCi";
+
+/* Class = "NSMenuItem"; title = "GHCi"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "GHCi";
+
+/* Class = "NSMenuItem"; title = "Stop"; ObjectID = "f5y-cp-rB1"; */
+"f5y-cp-rB1.title" = "Stop";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "f6d-5s-Tq1"; */
+"f6d-5s-Tq1.title" = "Help";
+
+/* Class = "NSMenuItem"; title = "GHC Documentation"; ObjectID = "fkL-8P-ZF2"; */
+"fkL-8P-ZF2.title" = "GHC Documentation";
+
+/* Class = "NSViewController"; title = "Settings"; ObjectID = "hVr-lK-IKa"; */
+"hVr-lK-IKa.title" = "Settings";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "iAC-3E-uwl"; */
+"iAC-3E-uwl.title" = "Paste";
+
+/* Class = "NSMenuItem"; title = "Open Text Editor"; ObjectID = "jjK-I8-RQr"; */
+"jjK-I8-RQr.title" = "Open Text Editor";
+
+/* Class = "NSMenuItem"; title = "Libraries documentation"; ObjectID = "lsq-mS-sXf"; */
+"lsq-mS-sXf.title" = "Libraries documentation";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "lyY-tP-Gtk"; */
+"lyY-tP-Gtk.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Save…"; ObjectID = "pxx-59-PXV"; */
+"pxx-59-PXV.title" = "Save…";
+
+/* Class = "NSTextFieldCell"; title = "Font:"; ObjectID = "pyH-aJ-hgt"; */
+"pyH-aJ-hgt.title" = "Font:";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "sJj-jp-JOT"; */
+"sJj-jp-JOT.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "sLR-Rq-L66"; */
+"sLR-Rq-L66.title" = "Help";
+
+/* Class = "NSMenu"; title = "macGHCi"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "macGHCi";
+
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "usC-sb-45e"; */
+"usC-sb-45e.title" = "Reset";
+
+/* Class = "NSMenuItem"; title = "Editor"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Editor";
