@@ -200,7 +200,7 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     private func onRefreshEditor(notification: Notification)
     {
         self.sourceEditor.backgroundColor = self.userDefaults.colorForKey(key: "editorBackgroundColor")!
-        let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+        let attributes = [NSAttributedStringKey.font:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSAttributedStringKey.foregroundColor: self.userDefaults.colorForKey(key: "fontColor")]
         
         self.sourceEditor.textStorage?.setAttributedString(NSAttributedString(string: (self.sourceEditor.textStorage?.string)!, attributes: attributes))
     }
@@ -214,9 +214,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     private func ghci_OnNewDataReceivedCallBack(notification: Notification)
     {
         let userInfo = notification.userInfo
-        var message  = userInfo?["message"] as? String
+        let message  = userInfo?["message"] as? String
         
-        let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+        let attributes = [NSAttributedStringKey.font:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSAttributedStringKey.foregroundColor: self.userDefaults.colorForKey(key: "fontColor")]
 
         self.sourceEditor.textStorage?.append(NSAttributedString(string: message!, attributes: attributes))
         self.sourceEditor.scrollToEndOfDocument(self)
@@ -232,7 +232,7 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
     {
         let userInfo = notification.userInfo
         let message  = userInfo?["message"] as? String
-        let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+        let attributes = [NSAttributedStringKey.font:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSAttributedStringKey.foregroundColor: self.userDefaults.colorForKey(key: "fontColor")]
         
         self.sourceEditor.textStorage?.setAttributedString(NSAttributedString(string: self.sourceEditor.getPreviousLineAndAppend(message: message!), attributes: attributes))
         
@@ -325,8 +325,8 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
         panel.title = "Select file"
         panel.allowedFileTypes = ["hs"]
         panel.begin(
-            completionHandler: {(result:Int) in
-                if(result == NSFileHandlingPanelOKButton)
+            completionHandler: {(result : NSApplication.ModalResponse) in
+                if(result == NSApplication.ModalResponse.OK)
                 {
                     self.sourceEditor.textStorage?.append(NSAttributedString(string: "\n"))
                     self.ghci.write(":l " + panel.url!.path)
@@ -346,8 +346,8 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
         panel.title = "Select file"
         panel.allowedFileTypes = ["hs"]
         panel.begin(
-            completionHandler: {(result:Int) in
-                if(result == NSFileHandlingPanelOKButton)
+            completionHandler: {(result) in
+                if(result == NSApplication.ModalResponse.OK)
                 {
                     self.view.window?.title = "macGHCi - " + (panel.url?.lastPathComponent)!
                     self.sourceEditor.textStorage?.mutableString.setString("")
@@ -364,9 +364,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
                     }
                     
                     self.sourceEditor.backgroundColor = self.userDefaults.colorForKey(key: "editorBackgroundColor")!
-                    let attributes = [NSFontAttributeName:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSForegroundColorAttributeName: self.userDefaults.colorForKey(key: "fontColor")]
+                    let attributes = [NSAttributedStringKey.font:  NSFont(name: self.userDefaults.object(forKey: "font") as! String, size: self.userDefaults.object(forKey: "fontSize") as! CGFloat), NSAttributedStringKey.foregroundColor: self.userDefaults.colorForKey(key: "fontColor")]
                     
-                    self.sourceEditor.textStorage?.setAttributedString(NSAttributedString(string: value, attributes: attributes))
+                    self.sourceEditor.textStorage?.setAttributedString(NSAttributedString(string: value, attributes: attributes ))
                 }
         })
     }
@@ -385,8 +385,9 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
             panel.title = "Save file"
             panel.allowedFileTypes = ["hs"]
             panel.begin(
-                completionHandler: {(result:Int) in
-                    if(result == NSFileHandlingPanelOKButton)
+                completionHandler: {(result : NSApplication.ModalResponse) in
+                    
+                    if(result == NSApplication.ModalResponse.OK)
                     {
                         self.view.window?.title = "macGHCi - " + (panel.url?.lastPathComponent)!
                         self.savePath = panel.url!.path
@@ -412,8 +413,8 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
         panel.title = "Save file"
         panel.allowedFileTypes = ["hs"]
         panel.begin(
-            completionHandler: {(result:Int) in
-                if(result == NSFileHandlingPanelOKButton)
+            completionHandler: {(result : NSApplication.ModalResponse) in
+                if(result == NSApplication.ModalResponse.OK)
                 {
                     self.view.window?.title = "macGHCi - " + (panel.url?.lastPathComponent)!
                     self.savePath = panel.url!.path
@@ -435,8 +436,8 @@ internal class TerminalViewController: NSViewController, NSTextViewDelegate {
         panel.title = "Select file"
         panel.allowedFileTypes = ["hs"]
         panel.begin(
-            completionHandler: {(result:Int) in
-                if(result == NSFileHandlingPanelOKButton)
+            completionHandler: {(result : NSApplication.ModalResponse) in
+                if(result == NSApplication.ModalResponse.OK)
                 {
                     self.sourceEditor.textStorage?.append(NSAttributedString(string: "\n"))
                     self.ghci.write(":add " + panel.url!.path)

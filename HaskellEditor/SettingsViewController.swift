@@ -64,7 +64,7 @@ internal class SettingsViewController: NSViewController {
         let fontManager = NSFontManager.init()
         let fonts = fontManager.availableFonts
         
-        for var i in 0...fonts.count - 1
+        for i in 0...fonts.count - 1
         {
             self.fontSelector.addItem(withObjectValue: fonts[i])
         }

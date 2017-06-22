@@ -45,7 +45,7 @@ extension NSTextView
         
         var newContent : String = ""
         
-        for var i in 0...lines.count - 1
+        for i in 0...lines.count - 1
         {
             if (lines.count - 2 >= i)
             {
@@ -74,7 +74,7 @@ extension NSTextView
         var newContent : String = ""
         newLine.append(command)
         
-        for var i in 0...lines.count - 1
+        for i in 0...lines.count - 1
         {
             if (lines.count - 2 >= i)
             {

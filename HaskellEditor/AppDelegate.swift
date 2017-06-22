@@ -26,10 +26,10 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
             let alert : NSAlert = NSAlert()
             alert.messageText = "Could not locate the ghci module at path /usr/local/bin/ghci"
             alert.informativeText = "In order to use this program please visit the https://www.haskell.org/downloads to download and install their latest ghc package. We recommend to download and install the Haskell Platform package."
-            alert.alertStyle = NSAlertStyle.warning
+            alert.alertStyle = NSAlert.Style.warning
             alert.addButton(withTitle: "OK")
             alert.runModal()
-            NSApplication.shared().terminate(self)
+            NSApplication.shared.terminate(self)
         }
     }
 
@@ -135,7 +135,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
      Parameter sender: Contains the sender object.
      */
     @IBAction func openGHCDoc(_ sender: Any) {
-        NSWorkspace.shared().open(URL(string: "https://downloads.haskell.org/~ghc/7.0.2/docs/html/")!)
+        NSWorkspace.shared.open(URL(string: "https://downloads.haskell.org/~ghc/7.0.2/docs/html/")!)
     }
     
     /**
@@ -144,7 +144,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
      Parameter sender: Contains the sender object.
      */
     @IBAction func openLibrariesDoc(_ sender: Any) {
-        NSWorkspace.shared().open(URL(string: "https://downloads.haskell.org/~ghc/7.0.2/docs/html/libraries/index.html")!)
+        NSWorkspace.shared.open(URL(string: "https://downloads.haskell.org/~ghc/7.0.2/docs/html/libraries/index.html")!)
     }
     
     /**
@@ -153,7 +153,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
      Parameter sender: Contains the sender object.
      */
     @IBAction func openGHCWebpage(_ sender: Any) {
-        NSWorkspace.shared().open(URL(string: "https://www.haskell.org/ghc/")!)
+        NSWorkspace.shared.open(URL(string: "https://www.haskell.org/ghc/")!)
     }
     
     /**
@@ -162,7 +162,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
      Parameter sender: Contains the sender object.
      */
     @IBAction func openHaskellWebpage(_ sender: Any) {
-        NSWorkspace.shared().open(URL(string: "http://haskell.org/")!)
+        NSWorkspace.shared.open(URL(string: "http://haskell.org/")!)
     }
     
     /**
